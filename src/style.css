@@ -90,6 +90,14 @@ small {
     }
 }
 
+.header svg {
+    flex-shrink: 0;
+}
+
+.header .button-row {
+    flex-shrink: 1;
+}
+
 .button-row ul {
     display: flex;
     list-style: none;
@@ -123,6 +131,20 @@ small {
   color: inherit;
   text-decoration: none;
   cursor: default;
+}
+
+.header .button-row ul li {
+    display: none;
+}
+
+.header .button-row ul li:last-child {
+    display: inherit;
+}
+
+@media (min-width: 768px) {
+    .header .button-row ul li {
+        display: inherit;
+    }
 }
 
 .about {
@@ -179,8 +201,6 @@ small {
     display: grid;
     grid-template: repeat(6, 1fr) / repeat(1, 1fr);
     grid-auto-flow: column;
-
-
     gap: 24px;
 }
 
@@ -238,6 +258,14 @@ small {
     flex-grow: 1;
     justify-content: center;
     gap: 8px;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.experience .button-row ul li:first-child,
+.experience .button-row ul li:last-child {
+    flex-grow: 0;
+    width: 112.2px;
 }
 
 @media (min-width: 768px) {
@@ -248,8 +276,16 @@ small {
 
 .work-place {
     display: flex;
+    flex-direction: column-reverse;
     justify-content: space-between;
-    gap: 32px;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .work-place {
+        flex-direction: row;
+        gap: 32px;
+    }
 }
 
 .work-place img {
@@ -279,24 +315,45 @@ small {
 }
 
 .work-place-description p {
+    display: none;
     font-size: 16px;
     color: #363E45A3;
+}
+
+@media (min-width: 768px) {
+    .work-place-description p {
+        display: inherit;
+    }
 }
 
 .skills {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .skills {
+        gap: 40px;
+    }
 }
 
 .metrics {
     display: grid;
-    grid-template: repeat(5, 1fr) / repeat(2, 1fr);
-    gap: 0px 32px;
+    grid-template: repeat(10, 1fr) / repeat(1, 1fr);
+    grid-auto-flow: column;
+    gap: 24px 0px;
+}
+
+@media (min-width: 768px) {
+    .metrics {
+        grid-template: repeat(5, 1fr) / repeat(2, 1fr);
+        gap: 0px 32px;
+    }
 }
 
 .skill-stat {
-    padding: 16px 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -304,15 +361,52 @@ small {
     font-size: 16px;
 }
 
+@media (min-width: 768px) {
+    .skill-stat {
+        padding: 16px 0;
+    }
+}
+
+.skill-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cross {
+    display: inline-flex;
+    background-image: url("cross.svg");
+    background-size: 16px 16px;
+    height: 16px;
+    width: 16px;
+}
+
+@media (min-width: 768px) {
+    .skill-name .cross {
+        display: none;
+    }
+}
+
+.skill-stat svg {
+    width: 100%;
+    max-width: 554px;
+}
+
 .add-skill {
     background-color: #98A3AE1F;
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 32px;
+    padding: 16px;
 
     border: 0px;
     border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    .add-skill {
+        padding: 32px;
+    }
 }
 
 form {
@@ -322,8 +416,16 @@ form {
 
 .inputs-flex {
     display: flex;
-    align-items: flex-end;
-    gap: 16px;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .inputs-flex {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 16px;
+    }
 }
 
 .input {
@@ -351,27 +453,61 @@ form {
 .contacts {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .contacts {
+        gap: 40px;
+    }
 }
 
 .contacts-flex {
     display: flex;
-    gap: 32px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .contacts-flex {
+        flex-direction: row;
+        gap: 32px;
+    }
 }
 
 .contact-item {
     flex: 2;
-    height: 400px;
+    min-height: 160px;
+    height: 160px;
     border: 0;
     border-radius: 8px;
     background-color: #98A3AE1F;
 
-    padding: 32px;
+    padding: 16px;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .contact-item {
+        height: 400px;
+        padding: 32px;
+    }
+}
+
+.contact-item svg {
+    width: 24;
+    height: 24;
+}
+
+@media (min-width: 768px) {
+    .contact-item svg {
+        width: 40;
+        height: 40;
+    }
 }
 
 .contact-info {
@@ -386,16 +522,27 @@ form {
 }
 
 .footer {
-    padding: 60px 0;
+    padding: 0 0 24px 0;
 
     box-sizing: border-box;
 
     display: flex;
+    flex-direction: column;
+    gap: 24px;
     justify-content: space-between;
     align-items: center;
 }
 
+@media (min-width: 768px) {
+    .footer {
+        gap: inherit;
+        flex-direction: row;
+        padding: 60px 0;
+    }
+}
+
 .footer .copyright {
+    line-height: 16px;
     font-size: 14px;
 }
 
