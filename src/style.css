@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: "Arial";
+    font-family: "Arial", sans-serif;
     display: flex;
     flex: 1;
     flex-flow: column;
